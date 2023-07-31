@@ -12,10 +12,10 @@ import io.reactivex.disposables.CompositeDisposable
 class MainActivity : AppCompatActivity() {
 
     private val compositeDisposable = CompositeDisposable()
+    private val binding: ActivityMainBinding by lazy { ActivityMainBinding.inflate(layoutInflater) }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        val binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
         val viewModel = ViewModelProvider(this)[NumberViewModel::class.java]
@@ -37,6 +37,17 @@ class MainActivity : AppCompatActivity() {
             }
         }
         compositeDisposable.add(disposable)
+
+        sampleData()
+    }
+
+    private fun sampleData() {
+        val viewModel = ViewModelProvider(this)[SampleViewModel::class.java]
+        binding.vm = viewModel
+        binding.lifecycleOwner = this
+        binding.btnHi.setOnClickListener {
+            viewModel.fetchUserName()
+        }
     }
 
     override fun onDestroy() {
