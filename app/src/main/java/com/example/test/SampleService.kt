@@ -2,7 +2,7 @@ package com.example.test
 
 import kotlinx.coroutines.delay
 
-class SampleService constructor() {
+class SampleService {
     val list = listOf("a", "b", "c")
     var i = 0
     suspend fun getUserName(): String {

@@ -2,17 +2,21 @@ package com.example.test
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import androidx.activity.viewModels
 import androidx.lifecycle.ViewModelProvider
 import com.example.test.databinding.ActivityMainBinding
 import com.jakewharton.rxbinding3.view.clicks
+import dagger.hilt.android.AndroidEntryPoint
 import io.reactivex.Observable
 import io.reactivex.disposables.CompositeDisposable
 
-
+@AndroidEntryPoint
 class MainActivity : AppCompatActivity() {
 
     private val compositeDisposable = CompositeDisposable()
     private val binding: ActivityMainBinding by lazy { ActivityMainBinding.inflate(layoutInflater) }
+
+    private val sampleViewModel: SampleViewModel by viewModels()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -42,11 +46,10 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun sampleData() {
-        val viewModel = ViewModelProvider(this)[SampleViewModel::class.java]
-        binding.vm = viewModel
+        binding.vm = sampleViewModel
         binding.lifecycleOwner = this
         binding.btnHi.setOnClickListener {
-            viewModel.fetchUserName()
+            sampleViewModel.fetchUserName()
         }
     }
 

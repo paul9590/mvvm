@@ -5,14 +5,18 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.launch
+import javax.inject.Inject
 
-class SampleViewModel constructor(
+
+@HiltViewModel
+class SampleViewModel @Inject constructor(
+    private val sampleUseCase: SampleUseCase
 ) : ViewModel() {
     private val _userName = MutableLiveData<String>()
     val userName: LiveData<String> = _userName
 
-    private val sampleUseCase = SampleUseCase(SampleRepository(SampleService()))
 
     fun fetchUserName() {
         viewModelScope.launch {
