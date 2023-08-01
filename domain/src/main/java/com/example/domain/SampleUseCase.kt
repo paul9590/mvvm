@@ -1,4 +1,4 @@
-package com.example.test
+package com.example.domain
 
 class SampleUseCase(
     private val sampleRepository: SampleRepository
