@@ -10,14 +10,12 @@ import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 
-
 @HiltViewModel
 class SampleViewModel @Inject constructor(
     private val sampleUseCase: SampleUseCase
 ) : ViewModel() {
     private val _userName = MutableLiveData<String>()
     val userName: LiveData<String> = _userName
-
 
     fun fetchUserName() {
         viewModelScope.launch {

@@ -1,14 +1,14 @@
 package com.example.test
 
-import com.example.domain.SampleRepository
 import com.example.data.SampleRepositoryImpl
 import com.example.data.SampleService
+import com.example.domain.SampleRepository
+import com.example.domain.SampleUseCase
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
 import dagger.hilt.components.SingletonComponent
 import javax.inject.Singleton
-import com.example.domain.SampleUseCase
 
 @Module
 @InstallIn(SingletonComponent::class)

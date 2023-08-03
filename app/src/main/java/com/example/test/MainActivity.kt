@@ -1,8 +1,8 @@
 package com.example.test
 
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.activity.viewModels
+import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.ViewModelProvider
 import com.example.test.databinding.ActivityMainBinding
 import com.jakewharton.rxbinding3.view.clicks
